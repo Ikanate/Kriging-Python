@@ -6,7 +6,7 @@ import lectura_img_mk2
 
 '''
    EXPLICACIÓN FUNCIONES: en esencia lee toda la imagen que queremos analizar, sea recortada o no.
-
+ cambio pa ver qpd con esto
    x,y: son las coordenadas de los pixeles, por ejemplo para el pixel cero esquina superior izquierda serian x[0]y[0], para el pixel uno
        que seguiría del cero para la derecha, osea todavía equina superior izquirda pero un pixel a la derecha, sería x[1]y[1], y así
        sucesivamente. La coordenada x[i]y[i] pertenece al pixel i. Son arreglos de numpy
