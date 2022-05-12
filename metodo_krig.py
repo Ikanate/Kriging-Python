@@ -1,4 +1,4 @@
-#Estas son las bibliotecas que usaremos para la interpolación de Kriging
+#Estas son las bibliotecas que usaremos para la interpolación de Kriging o eso dicen
 from pykrige.ok import OrdinaryKriging
 
 #Bibliotecas usadas para la segunda interpolacion
