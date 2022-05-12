@@ -5,7 +5,7 @@
 from PIL import Image
 import numpy as np
 
-#dire es la dirección donde está guradada la imagen
+#dire es la dirección donde está guradada la imagen dice marco
 def lec_img(dire):
 
     IMG = []
