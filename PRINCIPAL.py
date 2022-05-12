@@ -17,9 +17,10 @@ import lectura_img_mk2
 '''
 
 #IMAGENES que uso
-dire = r'C:\Users\marco\OneDrive\Escritorio\Ingenieria_fisica\Sistemas_de_la_instrumentacion\proyecto\imagenes\img37.jpg'
-dire = r'C:\Users\marco\OneDrive\Escritorio\Ingenieria_fisica\Sistemas_de_la_instrumentacion\proyecto\imagenes\img38.2.jpg'
-
+#dire = r'C:\Users\marco\OneDrive\Escritorio\Ingenieria_fisica\Sistemas_de_la_instrumentacion\proyecto\imagenes\img37.jpg'
+#dire = r'C:\Users\marco\OneDrive\Escritorio\Ingenieria_fisica\Sistemas_de_la_instrumentacion\proyecto\imagenes\img38.2.jpg'
+#Imagenes que se leen en la misma carpeta, sin depender de otras direcciones que solo funcionan para la computadora deseada
+dire = r'Imagen_prueba.jpg'
 '''Lectura de la imagen en el directorio y así a lo bastardo toda la imagen'''
 X , Y , Z, l, h, M = lectura_img_mk2.lec_img(dire)
 # M es una matriz que representa a la imagen
@@ -81,7 +82,8 @@ N = (l//d)**2  #Divido mi imagen de lxl en trozos de 40x40
 x = np.zeros(d**2)
 y = np.zeros(d**2)
 z = np.zeros(d**2)
-
+#Funcion para comprobar que esta sucediendo con Z, que es lo importante
+Z_gridata = 0
 for k in range(N):
     for i in range(d*k,d + d*k):
         for j in range(d*k,d + d*k):
@@ -89,7 +91,7 @@ for k in range(N):
             y[i+j] = i
             z[i+j] = M[i][j]
 
-    metodo_krig.krigging( x , y , z , l , l)
+    Z = metodo_krig.krigging( x , y , z , l , l)
 
 
 

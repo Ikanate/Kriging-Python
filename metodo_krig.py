@@ -65,7 +65,7 @@ def krigging(x,y,z,l,h):
     # esta interpolacion toma esos datos y los vuelve continuos
 
     Z = griddata((xf, yf), zf, (xi[None,:], yi[:,None]), method='linear')
-    
+    print(Z)
     fig = plt.figure()
     ax = Axes3D(fig)
     ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.jet,linewidth=1, antialiased=True)
