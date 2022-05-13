@@ -9,9 +9,6 @@ import numpy as np
 def lec_img(dire):
 
     IMG = []
-    X = []
-    Y = []
-    Z = []
 
     #Abrimos la Imagen
     # lo malo es que tengo que indicar la dirección exacta, no se porqué, se supone que no debe ser así.
@@ -32,17 +29,10 @@ def lec_img(dire):
             p = (r * 0.3 + g * 0.59 + b * 0.11)
 
             #guardamos
-            X.append(j)
-            Y.append(i)
-            Z.append(p)
             aux.append(p)
         
         IMG.append(aux)
 
-    #convierto los arrays a como los quería el andrés
-    X = np.array(X , np.int32)
-    Y = np.array(Y , np.int32)
-    Z = np.array(Z , np.double)
-
+    
     #regreso los datos que quería
-    return (X,Y,Z,x,y,IMG)
+    return (x,y,IMG)

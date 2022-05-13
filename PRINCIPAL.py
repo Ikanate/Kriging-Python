@@ -22,7 +22,7 @@ import lectura_img_mk2
 #Imagenes que se leen en la misma carpeta, sin depender de otras direcciones que solo funcionan para la computadora deseada
 dire = r'Imagen_prueba.jpg'
 '''Lectura de la imagen en el directorio y así a lo bastardo toda la imagen'''
-X , Y , Z, l, h, M = lectura_img_mk2.lec_img(dire)
+l, h, M = lectura_img_mk2.lec_img(dire)
 # M es una matriz que representa a la imagen
 
 #           FINAL LECTURA DE IMAGEN
@@ -43,7 +43,7 @@ import numpy as np
 #np.savetxt(r"C:\Users\marco\OneDrive\Escritorio\Ingenieria_fisica\Sistemas_de_la_instrumentacion\proyecto\programa\datos.csv", DATOS, delimiter=",")
 
 #Este solo guarda los datos de intensidad
-np.savetxt(r"C:\Users\marco\OneDrive\Escritorio\Ingenieria_fisica\Sistemas_de_la_instrumentacion\proyecto\programa_1\datos.csv", Z, delimiter=",")
+#np.savetxt(r"datos.csv", Z, delimiter=",")
 #La dirección dada es donde queremos que lo guarde lo ideal sería que fuera iguala la variable 'dire' para evitar tanto texto pero por ahora lo
 #   dejamos así.
 #   np.savetxt(dirección donde queremos guardar el csv, arreglo de numpy que queremos guardar, el delimitador de los datos)
@@ -74,24 +74,38 @@ if l < h:
     h = l
 elif l > h:
     l = h
-
-d = 40
-
-N = (l//d)**2  #Divido mi imagen de lxl en trozos de 40x40
-
+print("l: ",l, "\n",h)
+d = 300
+m = 1
+#N = (l//d)**2  #Divido mi imagen de lxl en trozos de 40x40
+N=1
 x = np.zeros(d**2)
 y = np.zeros(d**2)
 z = np.zeros(d**2)
 #Funcion para comprobar que esta sucediendo con Z, que es lo importante
 Z_gridata = 0
 for k in range(N):
-    for i in range(d*k,d + d*k):
-        for j in range(d*k,d + d*k):
-            x[i+j] = j
-            y[i+j] = i
-            z[i+j] = M[i][j]
+    patin = 0
+    for i in range(0,d):
+        for j in range(0,d):
+            x[patin] = i*m
+            y[patin] = j*m
+            z[patin] = M[i][j]*m
+            patin +=1
 
-    Z = metodo_krig.krigging( x , y , z , l , l)
+    #__________________________________________________________________________________________________________________
+    #               INICIO GURDADO DE LOS DATOS EN UN ARCHIVO CSV
+
+
+    D = list(zip(x,y,z))
+
+    np.savetxt("test",D, fmt="%i,%i,%i")
+
+    #               FINAL GURDADO DE LOS DATOS EN UN ARCHIVO CSV
+    #__________________________________________________________________________________________________________________
+
+
+    Z = metodo_krig.krigging( x , y , z , l , l,m)
 
 
 
